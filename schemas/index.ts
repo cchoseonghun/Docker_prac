@@ -1,14 +1,13 @@
-// const mongoose = require("mongoose");
 import mongoose from 'mongoose';
 
 const connect = () => {
   mongoose
-    .connect("mongodb://localhost:27017/db_name")
+    .connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.4l95n6a.mongodb.net/?retryWrites=true&w=majority`)
     .catch(err => console.log(err));
 };
 
 mongoose.connection.on("error", err => {
-  console.error("몽고디비 연결 에러", err);
+  console.error("MongoDB connection Error: ", err);
 });
 
-module.exports = connect;
+export default connect;

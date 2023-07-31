@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
 import express, { Express, Request, Response } from 'express';
 import connect from './schemas';
 import router from './routes';
 
+dotenv.config();
+
 const app: Express = express();
-const port = 8080;
+const port = process.env.PORT;
 
 connect();
 
